@@ -36,12 +36,12 @@ express()
   callback
 );
 
-function callback(err, res) {
+function callback(err, userres) {
   if (!err) 
   {  
      let folderId;
-     userId = res.id;
-     console.log(`App user ${res.id} is created successful`);
+     userId = userres.id;
+     console.log(`App user ${userres.id} is created successful`);
 
      var appUserClient = sdk.getAppAuthClient('user', userId);
 
@@ -50,9 +50,9 @@ function callback(err, res) {
     //const folderId = uuid.v4();
 
      // Create folder
-     appUserClient.folders.create('0', folderName, (err, res) => {
-       folderId = res.id;
-      console.log(`folder ${res.id} is created successful`);
+     appUserClient.folders.create('0', folderName, (err, folderres) => {
+       folderId = folderres.id;
+      console.log(`folder ${folderres.id} is created successful`);
       // Set upload values
       const fileName = 'test.txt';
 
